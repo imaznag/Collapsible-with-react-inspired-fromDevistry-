@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Collapsible from "./Collapsible";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Collapsible label="Click me">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum
+        commodi culpa, id tempora officia eligendi ratione provident magnam
+        voluptatem fuga, beatae totam,
+      </Collapsible>
+      <Collapsible label="Collapse for more">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      </Collapsible>
+      <Collapsible label="🧒">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum
+        commodi culpa, id tempora officia eligendi ratione provident magnam
+        voluptatem fuga, beatae totam, consequatur ad ducimus veritatis animi
+        tenetur impedit ipsa.
+      </Collapsible>
     </div>
   );
 }
