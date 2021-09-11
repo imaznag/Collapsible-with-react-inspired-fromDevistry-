@@ -1,23 +1,48 @@
-import React from "react";
-import Collapsible from "./Collapsible";
+import React, { useState } from "react";
+import axios from "axios";
 
 function App() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const handleChange = (e) => {
+    e.target.name == "name"
+      ? setName(e.target.value)
+      : setEmail(e.target.value);
+  };
+  // const handleEmailChange = (e) => {
+  //   console.log(e.target.value);
+  //   setEmail(e.target.value);
+  // };
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const data = { name, email };
+    console.log(data);
+    axios
+      .post("https://jsonplaceholder.typicode.com/users", data)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+  };
   return (
-    <div>
-      <Collapsible label="Click me">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum
-        commodi culpa, id tempora officia eligendi ratione provident magnam
-        voluptatem fuga, beatae totam,
-      </Collapsible>
-      <Collapsible label="Collapse for more">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-      </Collapsible>
-      <Collapsible label="🧒">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum
-        commodi culpa, id tempora officia eligendi ratione provident magnam
-        voluptatem fuga, beatae totam, consequatur ad ducimus veritatis animi
-        tenetur impedit ipsa.
-      </Collapsible>
+    <div className="container">
+      <form onSubmit={submitHandler}>
+        <div>
+          <label>Name :</label>
+          <input type="text" value={name} name="name" onChange={handleChange} />
+        </div>
+        <div>
+          <label>Email :</label>
+          <input
+            type="text"
+            value={email}
+            name="email"
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <button type="submit">submit</button>
+        </div>
+      </form>
     </div>
   );
 }
